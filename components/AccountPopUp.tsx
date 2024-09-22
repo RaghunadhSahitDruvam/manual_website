@@ -18,12 +18,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { User } from "lucide-react";
+import { useAtom, useStore } from "jotai";
+import { accountMenuState } from "./store";
 
 const AccountPopUp = () => {
+  const [accountMenuOpen, setAccountMenuOpen] = useAtom(accountMenuState, {
+    store: useStore(),
+  });
+  const handleOnClickAccountMenu = () => {
+    setAccountMenuOpen(true);
+    console.log("acc", accountMenuOpen);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={accountMenuOpen}>
       <DialogTrigger asChild>
-        <Button variant={"ghost"} size={"icon"} className="lg:flex">
+        <Button
+          onClick={() => handleOnClickAccountMenu()}
+          variant={"ghost"}
+          size={"icon"}
+          className="lg:flex"
+        >
           <User size={24} />
         </Button>
       </DialogTrigger>

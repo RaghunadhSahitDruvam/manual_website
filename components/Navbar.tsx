@@ -14,9 +14,18 @@ import SearchModal from "./SearchModal";
 import Link from "next/link";
 import AccountPopUp from "./AccountPopUp";
 import CartDrawer from "./CartDrawer";
+import { hamburgerMenuState } from "./store";
+import { useAtom, useStore } from "jotai";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [hamMenuOpen, setHamMenuOpen] = useAtom(hamburgerMenuState, {
+    store: useStore(),
+  });
+  const handleOnClickHamburgerMenu = () => {
+    setHamMenuOpen(true);
+    console.log("ham", hamMenuOpen);
+  };
   const navItems = [
     { name: "CRAZY DEALS", icon: <RiDiscountPercentFill size={24} /> },
     { name: "SHOP ALL", icon: <LuStore size={24} /> },
@@ -31,12 +40,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-15 ">
           <div className="flex items-center lg:w-1/3">
-            <Sheet>
+            <Sheet open={hamMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant={"ghost"}
                   size={"icon"}
                   className="lg:hidden mr-2"
+                  onClick={() => handleOnClickHamburgerMenu()}
                 >
                   <Menu size={24} />
                 </Button>
