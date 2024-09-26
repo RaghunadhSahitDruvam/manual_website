@@ -5,15 +5,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Marquee from "react-fast-marquee";
 import ProductCard from "@/components/home/ProductCard";
-import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 import ProductReviewComponent from "@/components/product/ProductReviewComponent";
 import ProductDetailsAccordian from "@/components/product/ProductDetailsAccordian";
-import Image from "next/image";
 
 const ProductPage = () => {
   const images = [

@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader, SearchIcon } from "lucide-react";
-import { resolve } from "path";
 import { useState } from "react";
 
 type orderDetails = {
@@ -53,9 +52,10 @@ const TrackOrderPage = () => {
           "Order not found. Please check your order number and try again."
         );
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(
-        "An error occurred while looking up your order. Please try again later."
+        "An error occurred while looking up your order. Please try again later:" +
+          err
       );
     } finally {
       setLoading(false);

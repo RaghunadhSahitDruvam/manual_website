@@ -1,9 +1,11 @@
+/* eslint no-use-before-define: 0 */
+
 import React from "react";
 import { Dialog } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
-const SearchModal = ({ open, setOpen }: { open: boolean; setOpen: any }) => {
+const SearchModal = ({ setOpen }: { setOpen: any }) => {
   const trendingSearches = [
     "Perfume",
     "Bath & Body",

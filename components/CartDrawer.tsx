@@ -14,7 +14,6 @@ import { X, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { useAtom, useStore } from "jotai";
 import { cartMenuState } from "./store";
-import Image from "next/image";
 const CartDrawer = () => {
   const [cartMenuOpen, setCartMenuOpen] = useAtom(cartMenuState, {
     store: useStore(),

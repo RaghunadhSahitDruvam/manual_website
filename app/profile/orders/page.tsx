@@ -12,7 +12,6 @@ import {
 import { XCircle } from "lucide-react";
 import { FaLink } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
 
 const orders = [
   {

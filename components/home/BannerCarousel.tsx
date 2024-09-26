@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
-import Image from "next/image";
 
 const desktopImages = [
   "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727316572/800w-hcxr8JOcZTM_v6msxd.webp",

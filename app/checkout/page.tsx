@@ -14,7 +14,6 @@ import {
   CreditCardIcon,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 type Steps = {
   title: string;

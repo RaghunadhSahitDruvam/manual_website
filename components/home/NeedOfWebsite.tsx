@@ -1,6 +1,5 @@
 import React from "react";
 import { Rabbit, Droplet, Wallet, Users } from "lucide-react";
-import Image from "next/image";
 const NeedOfWebsite = () => {
   const features = [
     {

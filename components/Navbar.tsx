@@ -1,6 +1,6 @@
+/* eslint no-use-before-define: 0 */
 "use client";
 import {
-  Search,
   User,
   Menu,
   Package,
@@ -165,8 +165,11 @@ const Navbar = () => {
                       {/* Display submenu if the item is clicked */}
                       {item.hasSubmenu && activeSubmenu === item.name && (
                         <ul className="pl-2 pt-2 space-y-1">
-                          {item.submenu.map((submenuItem) => (
-                            <div className="flex items-center justify-start">
+                          {item.submenu.map((submenuItem, index) => (
+                            <div
+                              className="flex items-center justify-start"
+                              key={index}
+                            >
                               <ChevronRight className="w-5 h-5" />
                               <li
                                 key={submenuItem.name}
@@ -193,7 +196,7 @@ const Navbar = () => {
                   onClick={() => setOpen(true)}
                   className="pl-10 pr-4 py-2 w-full border-b-2 border-black"
                 />
-                {open && <SearchModal open={open} setOpen={setOpen} />}
+                {open && <SearchModal setOpen={setOpen} />}
               </div>
             </div>
           </div>

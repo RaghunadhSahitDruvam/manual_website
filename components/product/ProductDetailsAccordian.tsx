@@ -44,7 +44,7 @@ const ProductDetailsAccordian = () => {
         </AccordionItem>
         <AccordionItem value="item-4">
           <AccordionTrigger className="uppercase subHeading tracking-[1px]">
-            FAQ'S
+            FAQ&apos;S
           </AccordionTrigger>
           <AccordionContent>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
