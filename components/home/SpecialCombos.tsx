@@ -1,22 +1,26 @@
+import Image from "next/image";
 import React from "react";
 
 const comboData = [
   {
     id: 1,
     title: "Daily Essential Kit",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314688/800w-fDTMbXs8Oe0_lo6rzv.webp",
     altText: "Slide 1",
   },
   {
     id: 2,
     title: "Impeccable Matte Set of Three",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314688/800w-5eU04gvABJs_tatwlc.webp",
     altText: "Slide 2",
   },
   {
     id: 3,
     title: "Fragrance Team Set",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314688/800w-7c4w5uNaEyc_plialn.webp",
     altText: "Slide 3",
   },
 ];
@@ -27,7 +31,7 @@ const SpecialCombos = () => {
         SPECIAL COMBOS
       </div>
       <div className="relative">
-        <div className="flex overflow-x-auto gap-[20px] sm:flex-wrap sm:justify-center scroll-smooth no-scrollbar">
+        <div className="flex overflow-x-auto gap-[20px] sm:justify-center scroll-smooth no-scrollbar">
           {comboData.map((combo) => (
             <div key={combo.id} className="flex-shrink-0 w-[80vw] sm:w-[347px]">
               <img

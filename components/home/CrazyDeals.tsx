@@ -1,22 +1,26 @@
+import Image from "next/image";
 import React from "react";
 
 const dealsData = [
   {
     id: 1,
     title: "Personal Care Bundle",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314689/800w-SR7K5nxBVr8_na9qik.webp",
     altText: "Slide 1",
   },
   {
     id: 2,
     title: "Essential Cosmetics",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314688/800w-moQWTTJcEbk_nyvzfq.webp",
     altText: "Slide 2",
   },
   {
     id: 3,
     title: "Magical Set",
-    imgSrc: "https://placehold.co/400x323",
+    imgSrc:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727314688/800w-h3QQLkdtmWY_thb4og.webp",
     altText: "Slide 3",
   },
 ];
@@ -27,7 +31,7 @@ const CrazyDeals = () => {
         Crazy Deals
       </div>
       <div className="relative">
-        <div className="flex overflow-x-auto gap-[20px] sm:flex-wrap sm:justify-center scroll-smooth no-scrollbar">
+        <div className="flex overflow-x-auto gap-[20px] sm:justify-center scroll-smooth no-scrollbar">
           {dealsData.map((deal) => (
             <div key={deal.id} className="flex-shrink-0 w-[80vw] sm:w-[347px]">
               <img

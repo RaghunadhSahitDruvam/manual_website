@@ -14,6 +14,7 @@ import { X, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { useAtom, useStore } from "jotai";
 import { cartMenuState } from "./store";
+import Image from "next/image";
 const CartDrawer = () => {
   const [cartMenuOpen, setCartMenuOpen] = useAtom(cartMenuState, {
     store: useStore(),
@@ -35,14 +36,16 @@ const CartDrawer = () => {
       name: "High-End Fragrance Collection for Males",
       price: 1615,
       quantity: 4,
-      image: "https://placehold.co/70x70",
+      image:
+        "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727352106/2_upscaled_g6ibby.png",
     },
     {
       id: "2",
       name: "High-End Fragrance Collection for Males",
       price: 2300,
       quantity: 4,
-      image: "https://placehold.co/70x70",
+      image:
+        "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727352106/1_upscaled_pku7p3.png",
     },
   ]);
   const removeItem = (id: string) => {
@@ -97,7 +100,7 @@ const CartDrawer = () => {
                   <p className="text-xs sm:text-sm text-gray-500 mt-1">
                     Buy More Save More
                   </p>
-                  <div className="flex items-center justify-center mt-2">
+                  <div className="flex items-center justify-between mt-2">
                     <div className="flex items-center">
                       <button
                         className="p-1"

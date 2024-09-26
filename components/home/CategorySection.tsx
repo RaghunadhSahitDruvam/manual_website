@@ -1,12 +1,37 @@
+import Image from "next/image";
 import React from "react";
 
 const categories = [
-  { name: "COSMETICS", image: "https://placehold.co/300x300" },
-  { name: "SKINCARE", image: "https://placehold.co/300x300" },
-  { name: "LUXURY PERFUMES", image: "https://placehold.co/300x300" },
-  { name: "BATH & BODY", image: "https://placehold.co/300x300" },
-  { name: "Skin Deodorants", image: "https://placehold.co/300x300" },
-  { name: "GIFT SETS", image: "https://placehold.co/300x300" },
+  {
+    name: "COSMETICS",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315701/800w-5eU04gvABJs_zqip4d.webp",
+  },
+  {
+    name: "SKINCARE",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315700/800w-qWKqCY5hzd8_hr8sey.webp",
+  },
+  {
+    name: "LUXURY PERFUMES",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315700/800w-Yn6osI7XMnI_azndat.webp",
+  },
+  {
+    name: "BATH & BODY",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315701/800w-DI-sLlEIVnM_tiuzw4.webp",
+  },
+  {
+    name: "Skin Deodorants",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315700/Skin_Care_Products_nvwzf0.png",
+  },
+  {
+    name: "GIFT SETS",
+    image:
+      "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727315701/800w-XaTLqFr-mtI_yinzh6.jpg",
+  },
 ];
 const CategorySection = () => {
   return (
@@ -21,8 +46,6 @@ const CategorySection = () => {
               <img
                 src={category.image}
                 alt={category.name}
-                width={300}
-                height={300}
                 className="w-full h-auto object-cover"
               />
             </div>
