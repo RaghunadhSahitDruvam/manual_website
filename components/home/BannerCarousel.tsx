@@ -5,10 +5,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 
 const desktopImages = [
-  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727316572/800w-hcxr8JOcZTM_v6msxd.webp",
-  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727316572/800w--jAbYD3auqM_xqyski.webp",
-  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727316571/800w-V7YL9f58bJc_xhbxew.webp",
-  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727316571/800w-e4JemVW04H8_r9lvcg.webp",
+  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727399729/pixelcut-export_smh3fv.png",
+  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727399729/pixelcut-export_2_ze8uvi.png",
+  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727399729/pixelcut-export_3_ovaqca.png",
+  "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727399728/pixelcut-export_1_focyqi.png",
 ];
 
 const mobileImages = [

@@ -37,6 +37,7 @@ const ProductPage = () => {
                   <CarouselItem key={index}>
                     <div className="p-1">
                       <img
+                        src={imgSrc}
                         alt={`Product Image ${index + 1}`}
                         className="w-full h-auto object-cover"
                       />
