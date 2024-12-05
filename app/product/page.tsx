@@ -11,14 +11,19 @@ import ProductCard from "@/components/home/ProductCard";
 import ProductReviewComponent from "@/components/product/ProductReviewComponent";
 import ProductDetailsAccordian from "@/components/product/ProductDetailsAccordian";
 
+// ProductPage component: Individual product detail page layout with product carousel,
+// price details, ratings, reviews, and recommendations
 const ProductPage = () => {
+  // Array of image URLs for the product's image carousel
   const images = [
     "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727321123/Untitled_design_v3eavb.png",
     "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727321123/800w-_ShdzRGGvdI_jqaoyg.webp",
     "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727321123/800w-W_55-2Yrou0_jl6lot.jpg",
   ];
+
   return (
     <div>
+      {/* Announcement Marquee: Displays promotional offers and shipping information */}
       <Marquee className="bg-[#FFF579] flex justify-between gap-[50px] p-4 sm:hidden">
         <p className="para mx-4">✨ Free delivery on all PrePaid Orders</p>
         <p className="para mx-4">
@@ -28,8 +33,11 @@ const ProductPage = () => {
           1 Body wash cleanser + 5 SKINCARE PRODUCTS @ ₹1500
         </p>
       </Marquee>
+
+      {/* Main container: Product details section */}
       <div className="max-w-7xl ownContainer pb-6 px-6 pt-2">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 mb-[20px] ">
+          {/* Product Image Carousel: Displays multiple images of the product */}
           <div className="w-full lg:w-1/2">
             <Carousel className="w-full">
               <CarouselContent>
@@ -47,11 +55,18 @@ const ProductPage = () => {
               </CarouselContent>
             </Carousel>
           </div>
+
+          {/* Product Information: Title, price, rating, and cart interaction */}
           <div className="w-full lg:w-1/2 space-y-4">
+            {/* Product Title */}
             <h1 className="text-2xl lg:subHeading">
               High-End Fragrance Collection for Males
             </h1>
+
+            {/* Product Category */}
             <p className="text-xs lg:text-sm text-gray-500">MEN</p>
+
+            {/* Product Rating: Displays star ratings and total number of reviews */}
             <div className="flex items-center gap-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
@@ -68,6 +83,8 @@ const ProductPage = () => {
               <span className="text-sm font-medium">4.4</span>
               <span className="text-sm text-gray-500">(1221 Reviews)</span>
             </div>
+
+            {/* Pricing Information: Product price, discount, and tax info */}
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center py-4">
               <div className="mb-4 lg:mb-0">
                 <div className="flex items-baseline gap-2 ">
@@ -79,8 +96,10 @@ const ProductPage = () => {
                   </span>
                   <span className="text-red-500 font-semibold">-39%</span>
                 </div>
-                <p className="text-sm text-gray-500 ">Inclusive of all taxes</p>
+                <p className="text-sm text-gray-500">Inclusive of all taxes</p>
               </div>
+
+              {/* Quantity Selector: Allows users to increase/decrease quantity */}
               <div className="flex items-center gap-0">
                 <Button
                   variant={"outline"}
@@ -99,9 +118,13 @@ const ProductPage = () => {
                 </Button>
               </div>
             </div>
+
+            {/* Add to Cart Button */}
             <Button className="w-full bg-black text-white gap-4 py-7">
               ADD TO CART
             </Button>
+
+            {/* Product Features: Icons with descriptive text */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
               {[
                 { icon: Clock, text: "LONG-LASTING" },
@@ -122,8 +145,14 @@ const ProductPage = () => {
             </div>
           </div>
         </div>
+
+        {/* Product Details Accordion: Expands to show more detailed information */}
         <ProductDetailsAccordian />
+
+        {/* Product Review Component: Displays product reviews */}
         <ProductReviewComponent />
+
+        {/* Related Products Section: Suggests additional products */}
         <ProductCard heading="YOU MAY ALSO LIKE" />
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 
+// Importing UI components from custom UI library and icons from Lucide
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,16 +16,36 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * Type for the steps in the checkout process, including title and icon.
+ * This type defines each step and its respective icon for better readability and maintenance.
+ */
 type Steps = {
   title: string;
   icon: React.ReactNode;
 };
 
+/**
+ * Array of steps to guide the user through the checkout process:
+ * - Delivery Address
+ * - Apply Coupon
+ * - Choose Payment
+ */
 const steps: Steps[] = [
   { title: "Delivery Address", icon: <MapPinIcon className="h-5 w-5" /> },
   { title: "Apply Coupon", icon: <TicketIcon className="h-5 w-5" /> },
   { title: "Choose Payment", icon: <CreditCardIcon className="h-5 w-5" /> },
 ];
+
+/**
+ * Type for order items in the cart.
+ * It defines the structure of each product in the cart, including:
+ * - Name of the product
+ * - Size
+ * - Quantity
+ * - Price
+ * - Image URL
+ */
 type OrderItems = {
   name: string;
   size: string;
@@ -32,6 +53,11 @@ type OrderItems = {
   price: number;
   image: string;
 };
+
+/**
+ * Example order items array, representing a sample list of products in the user's cart.
+ * This data will typically come from an API or state in real-world applications.
+ */
 const orderItems: OrderItems[] = [
   {
     name: "High-End Fragrance Collection for Males",
@@ -50,34 +76,63 @@ const orderItems: OrderItems[] = [
       "https://res.cloudinary.com/dtxh3ew7s/image/upload/v1727352106/1_upscaled_pku7p3.png",
   },
 ];
+
+/**
+ * Main CheckoutPage component for handling the checkout flow.
+ * It includes multi-step navigation (delivery address, coupon, payment) and an order summary.
+ */
 const CheckoutPage = () => {
+  // State to track the current step of the checkout process
   const [currentStep, setCurrentStep] = useState(0);
+
+  // State for managing coupon input
   const [couponCode, setCouponCode] = useState("");
+
+  // State for managing selected payment method
   const [paymentMethod, setPaymentMethod] = useState("");
+
+  // Calculate subtotal by summing up the prices of all items in the cart
   const subtotal = orderItems.reduce((sum, item) => sum + item.price, 0);
+
+  // Static discount value (this can be dynamically calculated based on coupon logic)
   const discount = 600;
+
+  // Calculate total by subtracting the discount from the subtotal
   const total = subtotal - discount;
+
+  /**
+   * Handle the "Next" button click to proceed to the next step in the checkout process.
+   * Ensures that the current step is not beyond the last step.
+   */
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
+
+  /**
+   * Handle the "Back" button click to return to the previous step in the checkout process.
+   */
   const handlePrevious = () => {
-    if (currentStep < steps.length - 1) {
+    if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
   };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="heading mb-6 text-center">CHECKOUT</h1>
       <div className="flex flex-col lg:flex-row gap-8">
+        {/* Left section for checkout steps */}
         <div className="lg:w-2/3 w-full px-4">
+          {/* Render step indicators */}
           <div className="flex flex-col lg:flex-row mb-8">
             {steps.map((step, index) => (
               <div
                 key={index}
                 className="flex items-center mb-4 lg:mb-0 lg:flex-row flex-col lg:space-x-4"
               >
+                {/* Step indicator circle with icon */}
                 <div
                   className={`rounded-full p-2 ${
                     index <= currentStep
@@ -91,6 +146,7 @@ const CheckoutPage = () => {
                     step.icon
                   )}
                 </div>
+                {/* Step title */}
                 <div className="ml-0 lg:ml-4 lg:mr-8 text-center lg:text-left">
                   <p
                     className={`text-sm font-medium ${
@@ -102,12 +158,15 @@ const CheckoutPage = () => {
                     {step.title}
                   </p>
                 </div>
+                {/* Connector line between steps */}
                 {index < steps.length - 1 && (
                   <div className="h-0.5 w-8 bg-border mt-1 lg:mt-0 mr-0 lg:mr-4 hidden lg:block"></div>
                 )}
               </div>
             ))}
           </div>
+
+          {/* Render the current step's content */}
           <Card>
             <CardHeader>
               <CardTitle className="subHeading">
@@ -115,8 +174,10 @@ const CheckoutPage = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
+              {/* Step 1: Delivery Address Form */}
               {currentStep === 0 && (
                 <div className="space-y-4">
+                  {/* Form for inputting the delivery address */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName">First Name</Label>
@@ -171,6 +232,8 @@ const CheckoutPage = () => {
                   </Button>
                 </div>
               )}
+
+              {/* Step 2: Apply Coupon Code */}
               {currentStep === 1 && (
                 <div className="space-y-4">
                   <div>
@@ -187,30 +250,42 @@ const CheckoutPage = () => {
                   </Button>
                 </div>
               )}
+
+              {/* Step 3: Choose Payment Method */}
               {currentStep === 2 && (
                 <div className="space-y-4">
+                  {/* Radio group for selecting payment method */}
                   <RadioGroup
                     value={paymentMethod}
                     onValueChange={setPaymentMethod}
                   >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="cod" id="cod" />
-                      <Label htmlFor="cod">Cash on Delivery (COD)</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="razorpay" id="razorpay" />
-                      <Label htmlFor="razorpay">Razorpay</Label>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="credit_card" id="credit_card" />
+                        <Label htmlFor="credit_card">Credit Card</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="debit_card" id="debit_card" />
+                        <Label htmlFor="debit_card">Debit Card</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="net_banking" id="net_banking" />
+                        <Label htmlFor="net_banking">Net Banking</Label>
+                      </div>
                     </div>
                   </RadioGroup>
-                  <Link href={"/order"}>
-                    <Button className="w-full" onClick={handleNext}>
-                      Confirm Payment Method
-                    </Button>
-                  </Link>
+                  <Button className="w-full" onClick={handleNext}>
+                    Confirm Payment Method
+                  </Button>
+                  <Button className="w-full" asChild>
+                    <Link href="/order">Place Order</Link>
+                  </Button>
                 </div>
               )}
             </CardContent>
           </Card>
+
+          {/* Navigation buttons for moving between steps */}
           <div className="mt-4 flex space-x-4 justify-center lg:justify-start">
             {currentStep > 0 && (
               <Button variant={"outline"} onClick={handlePrevious}>
@@ -218,60 +293,53 @@ const CheckoutPage = () => {
               </Button>
             )}
             {currentStep < steps.length - 1 && (
-              <Button variant={"outline"} onClick={handlePrevious}>
+              <Button variant={"outline"} onClick={handleNext}>
                 Continue
               </Button>
             )}
           </div>
         </div>
 
-        <div className="lg:w-1/3">
+        {/* Right section for order summary */}
+        <div className="lg:w-1/3 w-full px-4">
           <Card>
             <CardHeader>
-              <CardTitle className="subHeading">Order Summary</CardTitle>
+              <CardTitle>Order Summary</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
+                {/* Display each item in the cart */}
                 {orderItems.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover"
-                    />
-                    <div>
-                      <h3 className="para">{item.name}</h3>
-                      <p className="text-sm text-gray-600">Size: {item.size}</p>
-                      <p className="text-sm text-gray-600">
-                        Qty: {item.quantity}
-                      </p>
-                      <p className="font-medium">₹ {item.price.toFixed(2)}</p>
+                  <div key={index} className="flex justify-between">
+                    <div className="flex space-x-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="h-12 w-12 object-cover"
+                      />
+                      <div>
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {item.size} - {item.quantity}x
+                        </p>
+                      </div>
                     </div>
+                    <div className="font-medium">${item.price.toFixed(2)}</div>
                   </div>
                 ))}
-                <div className="border-t pt-4">
-                  <div className="flex justify-between">
-                    <span>Subtotal ({orderItems.length} Items):</span>
-                    <span>₹ {subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-green-600">
-                    <span>Cart Discount:</span>
-                    <span>- ₹ {discount.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Shipping Charges:</span>
-                    <span className="text-green-600">Free</span>
-                  </div>
-                  <div className="flex justify-between font-bold mt-2">
-                    <span>Total:</span>
-                    <span>₹ {total.toFixed(2)}</span>
-                  </div>
+                {/* Display subtotal, discount, and total */}
+                <div className="flex justify-between pt-4 border-t border-border">
+                  <p>Subtotal</p>
+                  <p>${subtotal.toFixed(2)}</p>
                 </div>
-                <Link href={"/order"}>
-                  <Button className="w-full bg-gray-200 text-gray-800 hover:bg-gray-300">
-                    Place Order with COD
-                  </Button>
-                </Link>
+                <div className="flex justify-between">
+                  <p>Discount</p>
+                  <p>-${discount.toFixed(2)}</p>
+                </div>
+                <div className="flex justify-between font-bold">
+                  <p>Total</p>
+                  <p>${total.toFixed(2)}</p>
+                </div>
               </div>
             </CardContent>
           </Card>

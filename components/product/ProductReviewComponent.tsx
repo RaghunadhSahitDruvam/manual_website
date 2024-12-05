@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "../ui/textarea";
 import { useForm } from "@mantine/form";
+import Link from "next/link";
 
 const ProductReviewComponent = () => {
   const [sortBy, setSortBy] = useState("Most Recent");
@@ -99,9 +100,11 @@ const ProductReviewComponent = () => {
               </span>
             </div>
           ))}
-          <button className="text-sm text-blue-600 mt-2">
-            See all reviews
-          </button>
+          <Link href={"/review"}>
+            <button className="text-sm text-blue-600 mt-2">
+              See all reviews
+            </button>
+          </Link>
         </div>
         <div className="md:w-2/3">
           <div className="flex justify-between mb-4">
